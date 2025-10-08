@@ -1,0 +1,41 @@
+#!/usr/bin/env sh
+
+##############################################################################
+##
+##  Gradle start up script for UN*X
+##
+##############################################################################
+
+# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+DEFAULT_JVM_OPTS="-Xmx64m -Xms64m"
+
+APP_BASE_NAME=`basename "$0"`
+APP_HOME=`cd "$(dirname "$0")" && pwd`
+
+CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
+
+if [ ! -f "$CLASSPATH" ]; then
+  echo "Gradle wrapper JAR not found at $CLASSPATH. Please run 'gradle wrapper' to generate it." >&2
+  exit 1
+fi
+
+JAVA_HOME=${JAVA_HOME:-}
+if [ -n "$JAVA_HOME" ] ; then
+  if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
+    JAVA_EXEC="$JAVA_HOME/jre/sh/java"
+  else
+    JAVA_EXEC="$JAVA_HOME/bin/java"
+  fi
+  if [ ! -x "$JAVA_EXEC" ] ; then
+    echo "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME" >&2
+    exit 1
+  fi
+else
+  JAVA_EXEC=`which java`
+  if [ -z "$JAVA_EXEC" ] ; then
+    echo "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH." >&2
+    exit 1
+  fi
+fi
+
+exec "$JAVA_EXEC" $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
